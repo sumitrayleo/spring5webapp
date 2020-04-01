@@ -43,13 +43,21 @@ public class DataInitializer implements CommandLineRunner {
 
         Author author2 = new Author("Roli");
         Book book2 = new Book("Ecology with emotion");
+        bookRepository.save(book2);
+        Book book3 = new Book("Ecology Again");
+        bookRepository.save(book3);
         author2.getBooks().add(book2);
         book2.getAuthors().add(author2);
+        author2.getBooks().add(book3);
+        book3.getAuthors().add(author2);
         book2.setPublisher(publisher);
         publisher.getBooks().add(book2);
+        book3.setPublisher(publisher);
+        publisher.getBooks().add(book3);
 
         authorRepository.save(author2);
         bookRepository.save(book2);
+        bookRepository.save(book3);
         publisherRepository.save(publisher);
 
         System.out.println("Number of Books added = " + bookRepository.count());
