@@ -1,4 +1,4 @@
-package ray.springframework.di.service;
+package guru.springframework.spring5webapp.di.service;
 
 import org.springframework.stereotype.Service;
 

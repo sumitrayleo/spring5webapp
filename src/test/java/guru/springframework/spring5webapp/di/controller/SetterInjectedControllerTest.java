@@ -1,8 +1,8 @@
-package ray.springframework.di.controller;
+package guru.springframework.spring5webapp.di.controller;
 
+import guru.springframework.spring5webapp.di.service.SetterInjectedGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ray.springframework.di.service.SetterInjectedGreetingService;
 
 class SetterInjectedControllerTest {
 
