@@ -1,15 +1,16 @@
 package guru.springframework.spring5webapp.di.service;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
-@Profile("EN")
-@Qualifier("i18nService")
-@Service
+import guru.springframework.spring5webapp.di.repository.GreetingRepository;
 public class i18nEnglishService implements GreetingService {
+
+    GreetingRepository repository;
+
+    public i18nEnglishService(GreetingRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public void greetings() {
-        System.out.println("Hello World - EN");
+        System.out.println(repository.getEnglishGreeting());
     }
 }
