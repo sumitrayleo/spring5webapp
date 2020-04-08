@@ -1,8 +1,15 @@
 package guru.springframework.spring5webapp.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
+
+import javax.annotation.PostConstruct;
 
 public class DummyDataSource {
+
+    @Autowired
+    private Environment environment;
 
     @Value("${ray.datasource.username}")
     private String username;
@@ -20,6 +27,14 @@ public class DummyDataSource {
                 ", password='" + password + '\'' +
                 ", dbUrl='" + dbUrl + '\'' +
                 '}';
+    }
+
+    @PostConstruct
+    private void getEnvironmentUserName(){
+        String envUserName = environment.getProperty("USERNAME");
+        if(envUserName != null){
+            this.username = envUserName;
+        }
     }
 
     public String getUsername() {
